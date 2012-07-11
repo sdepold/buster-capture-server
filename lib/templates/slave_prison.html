@@ -3,6 +3,11 @@
   <head>
     <title>Buster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <% if (auth) { %>
+    <script type="text/javascript">
+        var basicAuth = <%= auth %>;
+    </script>
+    <% } %>
     {{scripts}}
   </head>
   <frameset rows="<% if (hasHeader) { %><%= headerHeight %>px,<% } %>*">
