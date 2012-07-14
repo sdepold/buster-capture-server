@@ -39,29 +39,6 @@ buster.testCase("pubsub-client", {
         assert.calledWith(faye.Client, url);
     },
 
-    "_getFayeClientUrl": {
-        "should return a normal url if no basic auth is defined": function () {
-            var pc = bCapServPubsubClient.create({
-                host: "0.0.0.0",
-                port: h.SERVER_PORT
-            });
-
-            var url = "http://0.0.0.0:" + h.SERVER_PORT + "/messaging";
-            assert.equals(pc._getFayeClientUrl(), url);
-        },
-
-        "should add basic auth to the url if defined": function () {
-            var pc = bCapServPubsubClient.create({
-                host: "0.0.0.0",
-                port: h.SERVER_PORT,
-                auth: "foo:bar"
-            });
-
-            var url = "http://foo:bar@0.0.0.0:" + h.SERVER_PORT + "/messaging";
-            assert.equals(pc._getFayeClientUrl(), url);
-        }
-    },
-
     "should connect": function (done) {
         assert(true);
         this.pc.connect().then(done);
